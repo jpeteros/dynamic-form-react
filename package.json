@@ -9,16 +9,10 @@
     "react-scripts": "2.1.8",
     "reactstrap": "^8.0.0"
   },
-  "babel": {
-    "presets" : [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ]
-  },
   "scripts": {
     "start": "npm run build",
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --open",
-    "build:prod": "webpack -p && cp src/index.html dist/index.html"
+    "build-prod": "webpack -p && cp src/index.html dist/index.html"
   },
   "eslintConfig": {
     "extends": "react-app"
