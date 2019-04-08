@@ -10,9 +10,10 @@
     "reactstrap": "^8.0.0"
   },
   "scripts": {
-    "start": "npm run build",
-    "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --open",
-    "build-prod": "webpack -p && cp src/index.html dist/index.html"
+    "dev": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --open",
+    "postinstall": "webpack -p && cp src/index.html dist/index.html",
+    "start": "node server.js" 
+
   },
   "eslintConfig": {
     "extends": "react-app"
