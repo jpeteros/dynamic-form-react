@@ -2,6 +2,9 @@ import React from "react";
 import './form.css';
 
 export class Step extends React.Component {
+    validateQuestionType= () => {
+      /* Todo validate questionType e.g text, radio etc.. */
+    }
     render() {
       return(
         <React.Fragment>
