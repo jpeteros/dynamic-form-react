@@ -7,7 +7,7 @@ export class Step extends React.Component {
     }
     render() {
       return(
-        <React.Fragment>
+       
         <form onSubmit={this.props.handleSubmit}>
         <div className="form-group">
           <label>{this.props.itempPrompt}</label>
@@ -18,8 +18,8 @@ export class Step extends React.Component {
             type="text"
             maxLength = {this.props.min}
             required = {this.props.isRequired}
-            value={this.props.inputVal} 
-            onChange={this.props.handleChange}
+            value= {this.props.value} 
+            onChange= {this.props.handleChange}
           />
         </div>
         {this.props.currentStep === 2 ? (
@@ -28,7 +28,6 @@ export class Step extends React.Component {
         null
         )}
         </form>
-        </React.Fragment>
       )
     }
   }

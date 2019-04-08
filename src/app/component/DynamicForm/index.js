@@ -9,26 +9,28 @@ export class DynamicForm extends React.Component {
         this.state = {
             currentStep: 0,
             data: props.data,
-            inputVal: ''
+            inputVal: [],
+            val: ''
         };    
     }
 
     _next = () => {
-        let currentStep = this.state.currentStep
-        console.log(currentStep);
-        currentStep = currentStep >= 2 ? 2: currentStep + 1
+        let currentStep = this.state.currentStep;
+        currentStep = currentStep >= 2 ? 2: currentStep + 1;
         this.setState({
           currentStep: currentStep,
-          inputVal: ''
-        })
+          val:  ''
+        });
+        this.state.inputVal.splice(currentStep-1, 1, this.state.val);
       }
 
     _prev = () => {
         let currentStep = this.state.currentStep
-        // If the current step is 2 or 3, then subtract one on "previous" button click
-        currentStep = currentStep < 1 ? 0: currentStep - 1
+        currentStep = currentStep < 1 ? 0: currentStep - 1;
+        console.log(this.state.inputVal);
         this.setState({
-          currentStep: currentStep
+          currentStep: currentStep,
+          val: ''
         })
       }
 
@@ -61,15 +63,18 @@ export class DynamicForm extends React.Component {
     }
 
     handleChange = (event) => {
-        const {name, value} = event.target
+        const {value} = event.target
         this.setState({
-            inputVal: value
+            val : value
         })    
     }
 
     handleSubmit = event => {
         event.preventDefault()
-        alert(`Thank you for your answers`)
+        
+        this.state.inputVal.length >= 2 ? this.state.inputVal.splice(2, 1, this.state.val)
+       : this.state.inputVal.push(this.state.val);
+        alert(`These are your answers:  ${this.state.inputVal}` )
       }
 
     render() {
@@ -87,7 +92,7 @@ export class DynamicForm extends React.Component {
                     min = {item.min_char_length}
                     currentStep = {this.state.currentStep}
                     handleChange={this.handleChange}
-                    inputVal = {this.state.inputVal}
+                    value = {this.state.val}
                     handleSubmit = {this.handleSubmit}
                 />
                 {this.previousButton()}
